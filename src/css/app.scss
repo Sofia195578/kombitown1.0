@@ -1,0 +1,132 @@
+/* ==============================
+   ESTILOS GLOBALES
+   ============================== */
+
+/* Tipografía base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+.q-header {
+  background-color: #ff6f00 !important;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* DRAWER LATERAL */
+.q-drawer {
+  background-color: #fff;
+  border-right: 1px solid #eee;
+}
+
+.q-drawer__content {
+  padding: 15px;
+}
+
+/* CONTENIDO GENERAL */
+.q-page-container {
+  padding: 20px;
+}
+
+/* ==============================
+   TARJETAS DE COMIDA Y PRODUCTOS
+   ============================== */
+.comida-card,
+.promo-card,
+.extra-card,
+.bebida-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comida-card:hover,
+.promo-card:hover,
+.extra-card:hover,
+.bebida-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Imagen dentro de tarjetas */
+.comida-imagen,
+.extra-imagen,
+.bebida-imagen {
+  transition: transform 0.3s;
+}
+.comida-card:hover .comida-imagen,
+.extra-card:hover .extra-imagen,
+.bebida-card:hover .bebida-imagen {
+  transform: scale(1.05);
+}
+
+/* ==============================
+   TEXTOS Y COLORES
+   ============================== */
+.text-primary {
+  color: #ff6f00 !important;
+}
+
+.q-tab-panels {
+  background: #fff;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.q-chip {
+  background: #ffe0b2 !important;
+  color: #5d4037 !important;
+  font-size: 12px;
+}
+
+/* ==============================
+   BOTONES Y BADGES
+   ============================== */
+.q-btn {
+  border-radius: 50%;
+}
+
+.q-badge {
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+/* ==============================
+   CARRITO
+   ============================== */
+.q-list {
+  border-top: 1px solid #eee;
+}
+
+.q-item-label {
+  font-size: 14px;
+}
+
+.btn-vaciar {
+  border-radius: 6px !important; /* Borde cuadrado, pero con ligera suavidad */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 600px) {
+  .q-page-container {
+    padding: 10px;
+  }
+
+  .comida-card,
+  .promo-card,
+  .extra-card,
+  .bebida-card {
+    margin-bottom: 15px;
+  }
+}
