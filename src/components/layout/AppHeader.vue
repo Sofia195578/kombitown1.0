@@ -2,20 +2,12 @@
   <q-header elevated class="bg-primary text-white">
     <q-toolbar>
 
-      <!-- Botón para abrir/cerrar menú lateral -->
-      <q-btn
-        flat
-        dense
-        round
-        icon="menu"
-        @click="$emit('toggle-menu')"
-      />
-
+      <!-- Título centrado o a la izquierda -->
       <q-toolbar-title>
         Kombitown
       </q-toolbar-title>
 
-      <!-- Barra de búsqueda -->
+      <!-- Barra de búsqueda (opcional moverla) -->
       <q-input
         dense
         debounce="300"
@@ -49,6 +41,15 @@
           {{ cartCount }}
         </q-badge>
       </q-btn>
+
+      <!-- Botón para abrir/cerrar menú lateral (ahora a la derecha) -->
+      <q-btn
+        flat
+        dense
+        round
+        icon="menu"
+        @click="$emit('toggle-menu')"
+      />
 
     </q-toolbar>
   </q-header>

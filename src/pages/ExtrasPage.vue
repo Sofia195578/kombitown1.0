@@ -190,18 +190,18 @@ const { agregarItem } = useCarrito()
 const tabActiva = ref('acompañamientos')
 
 const acompañamientos = ref([
-  { id: 201, nombre: 'Papas Fritas', descripcion: 'Papas fritas crujientes', precio: 5000, imagen: '/papas-fritas.jpg' },
-  { id: 202, nombre: 'Aros de Cebolla', descripcion: 'Aros de cebolla empanizados', precio: 6000, imagen: '/aros-cebolla.jpg' },
-  { id: 203, nombre: 'Yuca Frita', descripcion: 'Yuca frita tradicional', precio: 4500, imagen: '/yuca-frita.jpg' },
-  { id: 204, nombre: 'Plátano Maduro', descripcion: 'Plátano maduro asado', precio: 3500, imagen: '/platano-maduro.jpg' }
+  { id: 201, nombre: 'Papas Fritas', descripcion: 'Papas fritas crujientes', precio: 5000, imagen: '/public/extras/1.jpg' },
+  { id: 202, nombre: 'Aros de Cebolla', descripcion: 'Aros de cebolla empanizados', precio: 6000, imagen: '/public/extras/2.jpg' },
+  { id: 203, nombre: 'Yuca Frita', descripcion: 'Yuca frita tradicional', precio: 4500, imagen: '/public/extras/3.jpg' },
+  { id: 204, nombre: 'Plátano Maduro', descripcion: 'Plátano maduro asado', precio: 3500, imagen: '/public/extras/4.jpg' }
 ])
 
 const salsas = ref([
-  { id: 301, nombre: 'Salsa Rosada', descripcion: 'Salsa tradicional de la casa', precio: 1000, imagen: '/salsa-rosada.jpg', picante: false, nivelPicante: 0 },
-  { id: 302, nombre: 'Salsa BBQ', descripcion: 'Salsa barbacoa ahumada', precio: 1500, imagen: '/salsa-bbq.jpg', picante: false, nivelPicante: 0 },
-  { id: 303, nombre: 'Salsa Picante', descripcion: 'Salsa con ají y especias', precio: 1200, imagen: '/salsa-picante.jpg', picante: true, nivelPicante: 3 },
-  { id: 304, nombre: 'Salsa de Ajo', descripcion: 'Salsa cremosa con ajo', precio: 1300, imagen: '/salsa-ajo.jpg', picante: false, nivelPicante: 0 },
-  { id: 305, nombre: 'Salsa Diabla', descripcion: 'La más picante de la casa', precio: 2000, imagen: '/salsa-diabla.jpg', picante: true, nivelPicante: 5 }
+  { id: 301, nombre: 'Salsa Rosada', descripcion: 'Salsa tradicional de la casa', precio: 1000, imagen: '/public/extras/5.jpg', picante: false, nivelPicante: 0 },
+  { id: 302, nombre: 'Salsa BBQ', descripcion: 'Salsa barbacoa ahumada', precio: 1500, imagen: '/public/extras/6.jpg', picante: false, nivelPicante: 0 },
+  { id: 303, nombre: 'Salsa Picante', descripcion: 'Salsa con ají y especias', precio: 1200, imagen: '/public/extras/7.jpg', picante: true, nivelPicante: 3 },
+  { id: 304, nombre: 'Salsa de Ajo', descripcion: 'Salsa cremosa con ajo', precio: 1300, imagen: '/public/extras/8.jpg', picante: false, nivelPicante: 0 },
+  { id: 305, nombre: 'Salsa Diabla', descripcion: 'La más picante de la casa', precio: 2000, imagen: '/public/extras/9.jpg', picante: true, nivelPicante: 5 }
 ])
 
 const postres = ref([
@@ -210,7 +210,7 @@ const postres = ref([
     nombre: 'Helado',
     descripcion: 'Helado cremoso en diferentes sabores',
     precio: 4000,
-    imagen: '/helado.jpg',
+    imagen: '/public/extras/10.jpg',
     frio: true,
     sabores: ['Vainilla', 'Chocolate', 'Fresa']
   },
@@ -219,7 +219,7 @@ const postres = ref([
     nombre: 'Brownie',
     descripcion: 'Brownie de chocolate con nueces',
     precio: 5500,
-    imagen: '/brownie.jpg',
+    imagen: '/public/extras/11.jpg',
     frio: false
   },
   {
@@ -227,7 +227,7 @@ const postres = ref([
     nombre: 'Milkshake',
     descripcion: 'Batido cremoso con helado',
     precio: 6000,
-    imagen: '/milkshake.jpg',
+    imagen: '/public/extras/12.jpg',
     frio: true,
     sabores: ['Vainilla', 'Chocolate', 'Fresa', 'Oreo']
   },
@@ -236,7 +236,7 @@ const postres = ref([
     nombre: 'Pie de Limón',
     descripcion: 'Torta de limón con merengue',
     precio: 4500,
-    imagen: '/pie-limon.jpg',
+    imagen: '/public/extras/13.jpg',
     frio: true
   },
   {
@@ -244,7 +244,7 @@ const postres = ref([
     nombre: 'Frappe Sencillo',
     descripcion: 'Frappe con crema batida',
     precio: 9000,
-    imagen: '/frappe-sencillo.jpg',
+    imagen: '/public/extras/14.jpg',
     frio: true
   },
   {
@@ -252,7 +252,7 @@ const postres = ref([
     nombre: 'Frappe Arequipeño',
     descripcion: 'Frappe con arequipe, oblea y crema batida',
     precio: 14500,
-    imagen: '/frappe-arequipe.jpg',
+    imagen: '/public/extras/15.jpg',
     frio: true
   },
   {
@@ -260,7 +260,7 @@ const postres = ref([
     nombre: 'Frappe Cocosete',
     descripcion: 'Frappe con arequipe, cocosete, helado y crema batida',
     precio: 15500,
-    imagen: '/frappe-cocosete.jpg',
+    imagen: '/public/extras/16.jpg',
     frio: true,
     sabores: ['Oreo', 'Chicle', 'Vainilla']
   },
@@ -269,7 +269,7 @@ const postres = ref([
     nombre: 'Frappe Brownie',
     descripcion: 'Frappe con brownie, helado y crema batida',
     precio: 16000,
-    imagen: '/frappe-brownie.jpg',
+    imagen: '/public/extras/17.jpg',
     frio: true,
     sabores: ['Maracuya', 'Ron con pasas', 'Fresa']
   }

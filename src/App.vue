@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <AppHeader 
       v-model:busqueda="busqueda"
-      :cart-count="carrito.length"
+      :cart-count="obtenerCantidadItems()"
       @toggle-menu="toggleMenu"
       @open-cart="toggleCart"
     />
@@ -22,13 +22,14 @@
       side="right"
       overlay
       bordered
-      :width="300"
+      :width="350"
     >
       <CartDrawer 
         :items="carrito"
         @update-quantity="updateQuantity"
         @remove-item="removeItem"
         @clear-cart="clearCart"
+        @checkout="handleCheckout"
       />
     </q-drawer>
   </q-layout>
@@ -46,7 +47,7 @@ const cartDrawer = ref(false)
 const leftDrawerOpen = ref(false)
 
 // Estado global del carrito
-const { carrito, updateQuantity, removeItem, clearCart } = useCarrito()
+const { carrito, updateQuantity, removeItem, clearCart, obtenerCantidadItems } = useCarrito()
 
 function toggleMenu() {
   leftDrawerOpen.value = !leftDrawerOpen.value
@@ -55,4 +56,5 @@ function toggleMenu() {
 function toggleCart() {
   cartDrawer.value = !cartDrawer.value
 }
+
 </script>

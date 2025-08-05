@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@quasar/extras": "^1.17.0",
     "quasar": "^2.18.2",
     "sweetalert2": "^11.22.2",

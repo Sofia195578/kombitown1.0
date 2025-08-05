@@ -8,41 +8,76 @@ export function useCarrito() {
     const precioExtras = extras.reduce((sum, extra) => sum + extra.precio, 0)
     const precioFinal = producto.precio + precioExtras
 
-    // Buscamos si ya existe en carrito un ítem con el mismo producto y mismos extras
-    const existente = carrito.value.find(i => 
-      i.id === producto.id &&
-      JSON.stringify(i.extras.map(e => e.id).sort()) === JSON.stringify(extras.map(e => e.id).sort())
-    )
+    // Creamos un identificador único basado en producto, extras y notas
+    const extrasIds = extras.map(e => e.id).sort().join(',')
+    const notasLimpias = notas.trim()
+    const identificadorUnico = `${producto.id}-${extrasIds}-${notasLimpias}`
+
+    // Buscamos si ya existe un ítem con la misma configuración exacta
+    const existente = carrito.value.find(i => {
+      const existenteExtrasIds = i.extras.map(e => e.id).sort().join(',')
+      const existenteNotasLimpias = i.notas ? i.notas.trim() : ''
+      const existenteIdentificador = `${i.productoId || i.id}-${existenteExtrasIds}-${existenteNotasLimpias}`
+      return existenteIdentificador === identificadorUnico
+    })
 
     if (existente) {
       existente.cantidad += cantidad
     } else {
-      carrito.value.push({
+      // Creamos un nuevo item con un ID único
+      const nuevoItem = {
         ...producto,
-        precio: precioFinal, // Guardamos precio con extras
+        id: Date.now() + Math.random(), // ID único para el carrito
+        productoId: producto.id, // ID original del producto
+        precio: precioFinal, // Precio con extras incluidos
         cantidad,
-        extras,
-        notas
-      })
+        extras: extras || [],
+        notas: notasLimpias || ''
+      }
+      
+      carrito.value.push(nuevoItem)
     }
   }
 
-  const updateQuantity = (id, cantidad) => {
-    const item = carrito.value.find(i => i.id === id)
-    if (item) item.cantidad = Math.max(1, cantidad)
+  const updateQuantity = (carritoItemId, cantidad) => {
+    const item = carrito.value.find(i => i.id === carritoItemId)
+    if (item) {
+      if (cantidad <= 0) {
+        removeItem(carritoItemId)
+      } else {
+        item.cantidad = cantidad
+      }
+    }
   }
 
-  const removeItem = (id) => {
-    carrito.value = carrito.value.filter(i => i.id !== id)
+  const removeItem = (carritoItemId) => {
+    carrito.value = carrito.value.filter(i => i.id !== carritoItemId)
   }
 
   const clearCart = () => {
     carrito.value = []
   }
 
-  const buscarProductoEnCarrito = (id) => {
-    return carrito.value.some(i => i.id === id)
+  const buscarProductoEnCarrito = (productoId) => {
+    return carrito.value.some(i => (i.productoId || i.id) === productoId)
   }
 
-  return { carrito, agregarItem, updateQuantity, removeItem, clearCart, buscarProductoEnCarrito }
+  const obtenerTotalCarrito = () => {
+    return carrito.value.reduce((sum, item) => sum + (item.precio * item.cantidad), 0)
+  }
+
+  const obtenerCantidadItems = () => {
+    return carrito.value.reduce((sum, item) => sum + item.cantidad, 0)
+  }
+
+  return { 
+    carrito, 
+    agregarItem, 
+    updateQuantity, 
+    removeItem, 
+    clearCart, 
+    buscarProductoEnCarrito,
+    obtenerTotalCarrito,
+    obtenerCantidadItems
+  }
 }

@@ -159,7 +159,7 @@ const bebidas = ref([
     nombre: 'Coca Cola',
     descripcion: 'Bebida gaseosa clásica',
     precio: 3000,
-    imagen: '/coca-cola.jpg',
+    imagen: '/public/bebidas/1.jpg',
     categoria: 'gaseosas',
     tipo: 'fria',
     tamaños: [
@@ -172,7 +172,7 @@ const bebidas = ref([
     nombre: 'Jugo de Naranja',
     descripcion: 'Jugo natural de naranja',
     precio: 4000,
-    imagen: '/jugo-naranja.jpg',
+    imagen: '/public/bebidas/2.jpg',
     categoria: 'jugos',
     tipo: 'fria'
   },
@@ -181,7 +181,7 @@ const bebidas = ref([
     nombre: 'Café Americano',
     descripcion: 'Café negro tradicional',
     precio: 3500,
-    imagen: '/cafe-americano.jpg',
+    imagen: '/public/bebidas/3.jpg',
     categoria: 'calientes',
     tipo: 'caliente'
   },
@@ -190,7 +190,7 @@ const bebidas = ref([
     nombre: 'Agua Mineral',
     descripcion: 'Agua mineral sin gas',
     precio: 2000,
-    imagen: '/agua-mineral.jpg',
+    imagen: '/public/bebidas/4.jpg',
     categoria: 'agua',
     tipo: 'fria'
   },
@@ -199,7 +199,7 @@ const bebidas = ref([
     nombre: 'Jugo de Mango',
     descripcion: 'Jugo natural de mango',
     precio: 4500,
-    imagen: '/jugo-mango.jpg',
+    imagen: '/public/bebidas/5.jpg',
     categoria: 'jugos',
     tipo: 'fria'
   },
@@ -208,7 +208,7 @@ const bebidas = ref([
     nombre: 'Chocolate Caliente',
     descripcion: 'Chocolate caliente tradicional',
     precio: 4000,
-    imagen: '/chocolate-caliente.jpg',
+    imagen: '/public/bebidas/6.jpg',
     categoria: 'calientes',
     tipo: 'caliente'
   },
@@ -217,7 +217,7 @@ const bebidas = ref([
   nombre: 'Pepsi',
   descripcion: 'Refresco clásico sabor cola',
   precio: 2800,
-  imagen: '/pepsi.jpg',
+  imagen: '/public/bebidas/7.jpg',
   categoria: 'gaseosas',
   tipo: 'fria',
   tamaños: [
@@ -230,7 +230,7 @@ const bebidas = ref([
   nombre: 'Sprite',
   descripcion: 'Refresco de lima-limón',
   precio: 2800,
-  imagen: '/sprite.jpg',
+  imagen: '/public/bebidas/8.jpg',
   categoria: 'gaseosas',
   tipo: 'fria',
   tamaños: [
@@ -243,7 +243,7 @@ const bebidas = ref([
   nombre: 'Manzana Postobón',
   descripcion: 'Refresco sabor manzana roja',
   precio: 3000,
-  imagen: '/manzana-postobon.jpg',
+  imagen: '/public/bebidas/9.jpg',
   categoria: 'gaseosas',
   tipo: 'fria',
   tamaños: [
@@ -256,7 +256,7 @@ const bebidas = ref([
   nombre: 'Jugo de Fresa',
   descripcion: 'Jugo natural de fresa fresco',
   precio: 4500,
-  imagen: '/jugo-fresa.jpg',
+  imagen: '/public/bebidas/10.jpg',
   categoria: 'jugos',
   tipo: 'fria'
 },
@@ -265,7 +265,7 @@ const bebidas = ref([
   nombre: 'Jugo de Maracuyá',
   descripcion: 'Jugo tropical refrescante',
   precio: 4500,
-  imagen: '/jugo-maracuya.jpg',
+  imagen: '/public/bebidas/11.jpg',
   categoria: 'jugos',
   tipo: 'fria'
 },
@@ -274,7 +274,7 @@ const bebidas = ref([
   nombre: 'Limonada Natural',
   descripcion: 'Limonada casera con hielo',
   precio: 4000,
-  imagen: '/limonada.jpg',
+  imagen: '/public/bebidas/12.jpg',
   categoria: 'jugos',
   tipo: 'fria'
 },
@@ -283,7 +283,7 @@ const bebidas = ref([
   nombre: 'Té Verde',
   descripcion: 'Infusión de té verde relajante',
   precio: 3500,
-  imagen: '/te-verde.jpg',
+  imagen: '/public/bebidas/13.jpg',
   categoria: 'calientes',
   tipo: 'caliente'
 },
@@ -292,7 +292,7 @@ const bebidas = ref([
   nombre: 'Café Latte',
   descripcion: 'Café con leche espumosa',
   precio: 4500,
-  imagen: '/cafe-latte.jpg',
+  imagen: '/public/bebidas/14.jpg',
   categoria: 'calientes',
   tipo: 'caliente'
 },
@@ -301,7 +301,7 @@ const bebidas = ref([
   nombre: 'Aromática de Frutas',
   descripcion: 'Infusión natural de frutas',
   precio: 3000,
-  imagen: '/aromatica-frutas.jpg',
+  imagen: '/public/bebidas/15.jpg',
   categoria: 'calientes',
   tipo: 'caliente'
 },
@@ -310,7 +310,7 @@ const bebidas = ref([
   nombre: 'Agua con Gas',
   descripcion: 'Agua mineral con gas',
   precio: 2500,
-  imagen: '/agua-gas.jpg',
+  imagen: '/public/bebidas/16.jpg',
   categoria: 'agua',
   tipo: 'fria'
 },
@@ -319,7 +319,7 @@ const bebidas = ref([
   nombre: 'Agua Saborizada',
   descripcion: 'Agua con sabor a frutas tropicales',
   precio: 3000,
-  imagen: '/agua-saborizada.jpg',
+  imagen: '/public/bebidas/17.jpg',
   categoria: 'agua',
   tipo: 'fria'
 },
@@ -328,7 +328,7 @@ const bebidas = ref([
   nombre: 'Soda Italiana',
   descripcion: 'Refresco gasificado con frutas',
   precio: 5000,
-  imagen: '/soda-italiana.jpg',
+  imagen: '/public/bebidas/18.jpg',
   categoria: 'agua',
   tipo: 'fria'
 }

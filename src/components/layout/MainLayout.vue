@@ -3,26 +3,38 @@
     <!-- Header -->
     <AppHeader
       :cart-count="carrito.length"
-      @toggle-menu="toggleMenu"
-      @open-cart="mostrarCarrito = true"
+      @toggle-menu="menuAbierto = !menuAbierto"
+      @open-cart="carritoAbierto = !carritoAbierto"
     />
 
-    <!-- Menú lateral -->
-    <SideMenu
+    <!-- Drawer menú lateral -->
+    <q-drawer
       v-model="menuAbierto"
-      @close="menuAbierto = false"
-    />
+      side="left"
+      bordered
+      show-if-above
+      :width="260"
+      behavior="desktop"
+    >
+      <SideMenu @close="menuAbierto = false" />
+    </q-drawer>
 
-    <!-- Contenido de las páginas -->
+    <!-- Drawer carrito (lado derecho) -->
+    <q-drawer
+      v-model="carritoAbierto"
+      side="right"
+      bordered
+      show-if-above
+      :width="300"
+      behavior="desktop"
+    >
+      <Carrito />
+    </q-drawer>
+
+    <!-- Contenido -->
     <q-page-container>
       <router-view />
     </q-page-container>
-
-    <!-- Carrito -->
-    <Carrito
-      v-if="mostrarCarrito"
-      @cerrar="mostrarCarrito = false"
-    />
   </q-layout>
 </template>
 
@@ -35,10 +47,6 @@ import { useCarrito } from '../components/composables/useCarrito.js'
 
 const { carrito } = useCarrito()
 
-const mostrarCarrito = ref(false)
 const menuAbierto = ref(false)
-
-function toggleMenu() {
-  menuAbierto.value = !menuAbierto.value
-}
+const carritoAbierto = ref(false)
 </script>

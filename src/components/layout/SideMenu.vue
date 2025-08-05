@@ -1,6 +1,7 @@
 <template>
   <q-drawer
     :model-value="modelValue"
+    side="right"
   @update:model-value="val => $emit('update:modelValue', val)"
   show-if-above
   bordered

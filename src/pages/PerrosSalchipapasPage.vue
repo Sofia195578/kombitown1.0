@@ -166,7 +166,7 @@ const perros = ref([
     nombre: 'Perro Sencillo',
     descripcion: 'Salchicha con pan y salsas básicas',
     precio: 8000,
-    imagen: '/perro-sencillo.jpg',
+    imagen: '/public/perros_salchipapas/1.jpg',
     tipo:null
   },
   {
@@ -174,7 +174,7 @@ const perros = ref([
     nombre: 'Perro Especial',
     descripcion: 'Con queso, tocineta y papas chip',
     precio: 12000,
-    imagen: '/perro-especial.jpg',
+    imagen: '/public/perros_salchipapas/2.jpg',
     tipo:null
   },
   {
@@ -182,7 +182,7 @@ const perros = ref([
     nombre: 'Perro Ranchero',
     descripcion: 'Con frijoles, chicharrón y salsa picante',
     precio: 15000,
-    imagen: '/perro-ranchero.jpg',
+    imagen: '/public/perros_salchipapas/3.jpg',
     tipo:null
   },
   {
@@ -190,7 +190,7 @@ const perros = ref([
     nombre: 'KombiDog Clásico',
     descripcion: 'Salchicha americana, queso rallado y papas trituradas',
     precio: 10000,
-    imagen: '/kombidog-clasico.jpg',
+    imagen: '/public/perros_salchipapas/4.jpg',
     tipo:'popular'
   },
   {
@@ -198,7 +198,7 @@ const perros = ref([
     nombre: 'KombiDog BBQ',
     descripcion: 'Salchicha de res, cebolla caramelizada y salsa BBQ',
     precio: 13000,
-    imagen: '/kombidog-bbq.jpg',
+    imagen: '/public/perros_salchipapas/5.jpg',
     tipo:'picante'
   },
   {
@@ -206,7 +206,7 @@ const perros = ref([
     nombre: 'KombiDog Picante',
     descripcion: 'Salchicha parrillera, jalapeños y salsa chipotle',
     precio: 14000,
-    imagen: '/kombidog-picante.jpg',
+    imagen: '/public/perros_salchipapas/6.jpg',
     tipo:'picante'
   },
   {
@@ -214,7 +214,7 @@ const perros = ref([
     nombre: 'Mega KombiDog',
     descripcion: 'Doble salchicha, tocineta, queso cheddar y papas chip',
     precio: 18000,
-    imagen: '/mega-kombidog.jpg',
+    imagen: '/public/perros_salchipapas/7.jpg',
     tipo:'popular'
   },
   {
@@ -222,7 +222,7 @@ const perros = ref([
     nombre: 'KombiDog Hawaiano',
     descripcion: 'Salchicha de cerdo, piña asada y salsa de miel mostaza',
     precio: 13500,
-    imagen: '/kombidog-hawaiano.jpg',
+    imagen: '/public/perros_salchipapas/8.jpg',
     tipo:'popular'
   }
 ])
@@ -234,49 +234,49 @@ const salchipapas = ref([
     nombre: 'Salchipapa Personal',
     descripcion: 'Papas fritas con salchicha picada',
     precio: 10000,
-    imagen: '/salchipapa-personal.jpg'
+    imagen: '/public/perros_salchipapas/9.jpg'
   },
   {
     id: 10,
     nombre: 'Salchipapa Familiar',
     descripcion: 'Grande para compartir, con todos los ingredientes',
     precio: 25000,
-    imagen: '/salchipapa-familiar.jpg'
+    imagen: '/public/perros_salchipapas/10.jpg'
   },
   {
     id: 11,
     nombre: 'KombiPapas BBQ',
     descripcion: 'Papas rústicas, salchicha y salsa BBQ ahumada',
     precio: 15000,
-    imagen: '/kombipapas-bbq.jpg'
+    imagen: '/public/perros_salchipapas/11.jpg'
   },
   {
     id: 12,
     nombre: 'KombiPapas Mixtas',
     descripcion: 'Con salchicha, chorizo y papas en corte casero',
     precio: 17000,
-    imagen: '/kombipapas-mixtas.jpg'
+    imagen: '/public/perros_salchipapas/12.jpg'
   },
   {
     id: 13,
     nombre: 'KombiPapas Full Cheese',
     descripcion: 'Papas bañadas en queso cheddar y mozzarella',
     precio: 16000,
-    imagen: '/kombipapas-cheese.jpg'
+    imagen: '/public/perros_salchipapas/13.jpg'
   },
   {
     id: 14,
     nombre: 'KombiPapas Rancheras',
     descripcion: 'Papas con salsa ranch, tocineta y cebolla crispy',
     precio: 18000,
-    imagen: '/kombipapas-rancheras.jpg'
+    imagen: '/public/perros_salchipapas/14.jpg'
   },
   {
     id: 15,
     nombre: 'Mega KombiPapas',
     descripcion: 'Porción gigante con todas las carnes y salsas',
     precio: 28000,
-    imagen: '/mega-kombipapas.jpg'
+    imagen: '/public/perros_salchipapas/15.jpg'
   }
 ])
 
