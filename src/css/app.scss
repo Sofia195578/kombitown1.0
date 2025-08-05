@@ -2,6 +2,10 @@
    ESTILOS GLOBALES
    ============================== */
 
+   @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Mogra&family=Nosifer&family=Rubik+Puddles&display=swap');
+
+   @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Tipografía base */
 body {
   font-family: 'Poppins', sans-serif;
@@ -32,6 +36,13 @@ body {
 .q-page-container {
   padding: 20px;
 }
+
+/* Alertas */
+.swal2-container {
+  z-index: 3000 !important; /* mayor que el de Quasar */
+}
+
+
 
 /* ==============================
    TARJETAS DE COMIDA Y PRODUCTOS
@@ -71,6 +82,21 @@ body {
    ============================== */
 .text-primary {
   color: #ff6f00 !important;
+  font-family:"Fascinate Inline", system-ui; 
+}
+
+.text-h6 {
+  font-family: "Sour Gummy", sans-serif;
+}
+
+.text-caption{
+  font-family: "Sour Gummy", sans-serif;
+  font-size: 15px;
+}
+
+.text-subtitle1{
+  font-family: "Sour Gummy", sans-serif;
+  font-size: 20px;
 }
 
 .q-tab-panels {
@@ -83,6 +109,10 @@ body {
   background: #ffe0b2 !important;
   color: #5d4037 !important;
   font-size: 12px;
+}
+
+.q-toolbar{
+  font-family:"Fascinate Inline", system-ui;
 }
 
 /* ==============================
@@ -115,6 +145,10 @@ body {
   letter-spacing: 0.5px;
 }
 
+.carrito-drawer {
+  width: 350px !important;
+}
+
 /* ==============================
    RESPONSIVE
    ============================== */
@@ -129,4 +163,37 @@ body {
   .bebida-card {
     margin-bottom: 15px;
   }
+
 }
+
+@media (max-width: 550px) {
+  .q-toolbar{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carrito-drawer {
+    width: 220px !important; /* más angosto en móvil */
+  }
+
+  /* Ajustar textos e imágenes dentro del carrito */
+  .carrito-drawer .q-item-label {
+    font-size: 12px !important;
+  }
+
+  .carrito-drawer .q-img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .carrito-drawer .text-h6,
+  .carrito-drawer .text-h5 {
+    font-size: 14px !important;
+  }
+
+  .carrito-drawer .q-btn {
+    min-width: 28px !important;
+    min-height: 28px !important;
+  }
+}
+

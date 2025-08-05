@@ -2,17 +2,16 @@
   <q-header elevated class="bg-primary text-white">
     <q-toolbar>
 
-      <!-- Título centrado o a la izquierda -->
+      <!-- Título -->
       <q-toolbar-title>
         Kombitown
       </q-toolbar-title>
 
-      <!-- Barra de búsqueda (opcional moverla) -->
+      <!-- Barra de búsqueda -->
       <q-input
         dense
         debounce="300"
-        :model-value="modelValue"
-        @update:model-value="$emit('update:modelValue', $event)"
+        v-model="localValue"
         placeholder="Buscar..."
         class="q-mx-md"
         outlined
@@ -42,7 +41,7 @@
         </q-badge>
       </q-btn>
 
-      <!-- Botón para abrir/cerrar menú lateral (ahora a la derecha) -->
+      <!-- Botón menú lateral -->
       <q-btn
         flat
         dense
@@ -50,13 +49,14 @@
         icon="menu"
         @click="$emit('toggle-menu')"
       />
-
     </q-toolbar>
   </q-header>
 </template>
 
 <script setup>
-defineProps({
+import { ref, watch } from 'vue'
+
+const props = defineProps({
   modelValue: String,
   cartCount: {
     type: Number,
@@ -64,5 +64,18 @@ defineProps({
   }
 })
 
-defineEmits(['update:modelValue', 'toggle-menu', 'open-cart'])
+const emit = defineEmits(['update:modelValue', 'toggle-menu', 'open-cart'])
+
+// Valor interno sincronizado
+const localValue = ref(props.modelValue)
+
+// Si cambia en el padre, actualizamos aquí
+watch(() => props.modelValue, (val) => {
+  localValue.value = val
+})
+
+// Emitimos al padre cuando cambia aquí
+watch(localValue, (val) => {
+  emit('update:modelValue', val)
+})
 </script>

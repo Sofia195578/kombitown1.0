@@ -4,11 +4,20 @@
       🍔 Hamburguesas
     </div>
 
+    <!-- Lista hamburguesas filtradas -->
     <div class="row q-col-gutter-md">
-      <div v-for="hamburguesa in hamburguesas" :key="hamburguesa.id" class="col-12 col-sm-6 col-md-3">
+      <div
+        v-for="hamburguesa in productosFiltrados"
+        :key="hamburguesa.id"
+        class="col-12 col-sm-6 col-md-3"
+      >
         <q-card class="hamburguesa-card cursor-pointer">
-          <q-img :src="hamburguesa.imagen" :alt="hamburguesa.nombre" ratio="1" class="hamburguesa-imagen" />
-
+          <q-img
+            :src="hamburguesa.imagen"
+            :alt="hamburguesa.nombre"
+            ratio="1"
+            class="hamburguesa-imagen"
+          />
 
           <q-card-section>
             <div class="text-h6 text-weight-bold">{{ hamburguesa.nombre }}</div>
@@ -22,17 +31,25 @@
               <div class="text-h6 text-primary text-weight-bold">
                 ${{ hamburguesa.precio.toLocaleString() }}
               </div>
-              <q-btn round color="primary" icon="add_shopping_cart" size="sm"
-                @click.stop="abrirPersonalizacion(hamburguesa)" />
+              <q-btn
+                round
+                color="primary"
+                icon="add_shopping_cart"
+                size="sm"
+                @click.stop="abrirPersonalizacion(hamburguesa)"
+              />
             </div>
           </q-card-section>
 
-          <q-badge v-if="hamburguesa.tipo" :color="hamburguesa.tipo === 'popular' ? 'orange' : 'red'" floating
-            class="text-white">
+          <q-badge
+            v-if="hamburguesa.tipo"
+            :color="hamburguesa.tipo === 'popular' ? 'orange' : 'red'"
+            floating
+            class="text-white"
+          >
             {{ hamburguesa.tipo === 'popular' ? '🌟 Popular' : '🌶️ Picante' }}
           </q-badge>
         </q-card>
-
       </div>
     </div>
 
@@ -48,8 +65,12 @@
         <q-card-section v-if="productoSeleccionado">
           <!-- Info producto -->
           <div class="row q-gutter-md q-mb-md">
-            <q-img :src="productoSeleccionado.imagen" :alt="productoSeleccionado.nombre"
-              style="width: 100px; height: 100px;" class="rounded-borders" />
+            <q-img
+              :src="productoSeleccionado.imagen"
+              :alt="productoSeleccionado.nombre"
+              style="width: 100px; height: 100px;"
+              class="rounded-borders"
+            />
             <div class="col">
               <div class="text-h6">{{ productoSeleccionado.nombre }}</div>
               <div class="text-body2 text-grey-7">
@@ -65,26 +86,50 @@
           <div class="q-mb-md">
             <div class="text-subtitle2 q-mb-sm">Cantidad:</div>
             <div class="row items-center q-gutter-md">
-              <q-btn round color="red" icon="remove" size="sm" :disable="cantidad <= 1"
-                @click="cantidad = Math.max(1, cantidad - 1)" />
+              <q-btn
+                round
+                color="red"
+                icon="remove"
+                size="sm"
+                :disable="cantidad <= 1"
+                @click="cantidad = Math.max(1, cantidad - 1)"
+              />
               <div class="text-h6 text-weight-bold">{{ cantidad }}</div>
-              <q-btn round color="green" icon="add" size="sm" @click="cantidad++" />
+              <q-btn
+                round
+                color="green"
+                icon="add"
+                size="sm"
+                @click="cantidad++"
+              />
             </div>
           </div>
 
           <!-- Extras -->
           <div class="q-mb-md">
             <div class="text-subtitle2 q-mb-sm">Extras:</div>
-            <q-option-group v-model="extrasSeleccionados" :options="extrasDisponibles.map(extra => ({
-              label: `${extra.nombre} (+${extra.precio.toLocaleString()})`,
-              value: extra
-            }))" type="checkbox" dense />
+            <q-option-group
+              v-model="extrasSeleccionados"
+              :options="extrasDisponibles.map(extra => ({
+                label: `${extra.nombre} (+${extra.precio.toLocaleString()})`,
+                value: extra
+              }))"
+              type="checkbox"
+              dense
+            />
           </div>
 
           <!-- Notas -->
           <div class="q-mb-md">
-            <q-input v-model="notasEspeciales" label="Notas especiales" type="textarea" rows="2" outlined dense
-              placeholder="Ej: Sin cebolla, punto de carne, etc." />
+            <q-input
+              v-model="notasEspeciales"
+              label="Notas especiales"
+              type="textarea"
+              rows="2"
+              outlined
+              dense
+              placeholder="Ej: Sin cebolla, punto de carne, etc."
+            />
           </div>
 
           <!-- Precio total -->
@@ -99,8 +144,13 @@
 
         <q-card-actions align="right" class="q-pt-none">
           <q-btn flat label="Cancelar" color="grey" v-close-popup />
-          <q-btn round color="primary" icon="add_shopping_cart" size="sm" @click="confirmarAgregarAlCarrito" />
-
+          <q-btn
+            round
+            color="primary"
+            icon="add_shopping_cart"
+            size="sm"
+            @click="confirmarAgregarAlCarrito"
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -108,11 +158,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { useCarrito } from '../components/composables/useCarrito.js'
 
+const props = defineProps({
+  searchQuery: {
+    type: String,
+    default: ''
+  }
+})
+
 const { agregarItem, buscarProductoEnCarrito } = useCarrito()
+
 
 // Lista hamburguesas
 const hamburguesas = ref([
@@ -209,7 +267,6 @@ const hamburguesas = ref([
 ])
 
 
-
 // Estado para el modal
 const mostrarDialogPersonalizar = ref(false)
 const productoSeleccionado = ref(null)
@@ -251,13 +308,11 @@ function confirmarAgregarAlCarrito() {
     timer: 1500,
     showConfirmButton: false,
     position: 'top-end',
-    toast: true
+    toast: true,
   })
 
   mostrarDialogPersonalizar.value = false
 }
-
-
 
 function calcularPrecioConExtras() {
   if (!productoSeleccionado.value) return 0
@@ -266,12 +321,16 @@ function calcularPrecioConExtras() {
   return (precioBase + precioExtras) * cantidad.value
 }
 
-function productoEnCarrito(hamburguesa) {
-  return buscarProductoEnCarrito(hamburguesa.id, [])
-}
-
-
+// Filtrado hamburguesas según searchQuery
+const productosFiltrados = computed(() => {
+  if (!props.searchQuery) return hamburguesas.value
+  return hamburguesas.value.filter(p =>
+    p.nombre.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
+    p.descripcion.toLowerCase().includes(props.searchQuery.toLowerCase())
+  )
+})
 </script>
+
 
 <style scoped>
 .hamburguesa-card {
@@ -290,9 +349,5 @@ function productoEnCarrito(hamburguesa) {
 
 .hamburguesa-card:hover .hamburguesa-imagen {
   transform: scale(1.05);
-}
-
-.producto-en-carrito {
-  border: 2px solid #1976d2;
 }
 </style>
