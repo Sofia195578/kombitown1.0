@@ -159,7 +159,7 @@ const bebidas = ref([
     nombre: 'Coca Cola',
     descripcion: 'Bebida gaseosa clásica',
     precio: 3000,
-    imagen: 'kombitown1.0/public/bebidas/1.jpg',
+    imagen: 'bebidas/1.jpg',
     categoria: 'gaseosas',
     tipo: 'fria',
     tamaños: [
