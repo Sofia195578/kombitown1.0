@@ -1,632 +1,199 @@
 /* ==============================
-   ESTILOS GLOBALES RESPONSIVE
+   ESTILOS GLOBALES
    ============================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Mogra&family=Nosifer&family=Rubik+Puddles&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+   @import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Mogra&family=Nosifer&family=Rubik+Puddles&display=swap');
 
-/* Tipografía base responsive */
+   @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Tipografía base */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #fafafa;
   color: #333;
   margin: 0;
   padding: 0;
-  font-size: 16px; /* Base font size */
 }
 
-/* ==============================
-   BREAKPOINTS PERSONALIZADOS
-   ============================== */
-
-/* Ultra-pequeñas: ≤300px */
-@media (max-width: 300px) {
-  body {
-    font-size: 14px;
-  }
-  
-  .q-page-container {
-    padding: 8px !important;
-  }
-  
-  .text-h4 {
-    font-size: 1.2rem !important;
-  }
-  
-  .text-h5 {
-    font-size: 1.1rem !important;
-  }
-  
-  .text-h6 {
-    font-size: 1rem !important;
-  }
-  
-  .ultra-small-hide {
-    display: none !important;
-  }
-  
-  .ultra-small-full-width {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  
-  /* Botones más grandes para touch */
-  .q-btn {
-    min-width: 44px !important;
-    min-height: 44px !important;
-    font-size: 12px !important;
-  }
-  
-  /* Cards más compactas */
-  .q-card {
-    margin-bottom: 8px !important;
-  }
-  
-  .q-card-section {
-    padding: 8px !important;
-  }
-  
-  /* Header compacto */
-  .q-toolbar {
-    min-height: 48px !important;
-    padding: 0 8px !important;
-  }
-  
-  .q-toolbar-title {
-    font-size: 1rem !important;
-  }
-  
-  /* Input más pequeño */
-  .q-field--dense .q-field__control {
-    height: 32px !important;
-  }
-}
-
-/* Móviles pequeños: 301px-599px */
-@media (min-width: 301px) and (max-width: 599px) {
-  .mobile-stack {
-    flex-direction: column !important;
-  }
-  
-  .mobile-center {
-    text-align: center !important;
-  }
-  
-  .mobile-hide-secondary {
-    display: none !important;
-  }
-}
-
-/* ==============================
-   HEADER RESPONSIVE
-   ============================== */
+/* HEADER */
 .q-header {
   background-color: #ff6f00 !important;
   color: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.q-toolbar {
-  font-family: "Fascinate Inline", system-ui;
-  flex-wrap: wrap;
-}
-
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .q-toolbar {
-    padding: 4px !important;
-  }
-  
-  .q-input {
-    min-width: 120px !important;
-    font-size: 12px !important;
-  }
-  
-  .q-toolbar-title {
-    min-width: 80px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .q-toolbar {
-    justify-content: space-between;
-  }
-  
-  .q-input {
-    flex: 1;
-    max-width: 200px;
-    margin: 0 8px;
-  }
-}
-
-/* ==============================
-   LAYOUT Y NAVEGACIÓN
-   ============================== */
+/* DRAWER LATERAL */
 .q-drawer {
   background-color: #fff;
   border-right: 1px solid #eee;
 }
 
+.q-drawer__content {
+  padding: 15px;
+}
+
+/* CONTENIDO GENERAL */
 .q-page-container {
   padding: 20px;
 }
 
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .q-drawer {
-    width: 200px !important;
-  }
-  
-  .q-item {
-    min-height: 40px !important;
-    padding: 4px 8px !important;
-  }
-  
-  .q-item__section--avatar {
-    min-width: 32px !important;
-  }
-  
-  .q-item__label {
-    font-size: 12px !important;
-  }
+/* Alertas */
+.swal2-container {
+  z-index: 3000 !important; /* mayor que el de Quasar */
 }
 
-/* Móviles */
-@media (max-width: 599px) {
-  .q-page-container {
-    padding: 10px;
-  }
-  
-  .q-drawer {
-    width: 260px;
-  }
-}
 
-/* Tablets */
-@media (min-width: 600px) and (max-width: 1023px) {
-  .q-page-container {
-    padding: 16px;
-  }
-}
 
 /* ==============================
-   TARJETAS DE PRODUCTOS
+   TARJETAS DE COMIDA Y PRODUCTOS
    ============================== */
 .comida-card,
 .promo-card,
 .extra-card,
-.bebida-card,
-.hamburguesa-card {
+.bebida-card {
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 15px;
 }
 
 .comida-card:hover,
 .promo-card:hover,
 .extra-card:hover,
-.bebida-card:hover,
-.hamburguesa-card:hover {
+.bebida-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .comida-card,
-  .promo-card,
-  .extra-card,
-  .bebida-card,
-  .hamburguesa-card {
-    border-radius: 8px;
-    margin-bottom: 8px;
-  }
-  
-  .comida-card:hover,
-  .promo-card:hover,
-  .extra-card:hover,
-  .bebida-card:hover,
-  .hamburguesa-card:hover {
-    transform: none; /* Desactivar hover en ultra-pequeñas */
-  }
-  
-  .q-img {
-    height: 120px !important;
-  }
-  
-  .hamburguesa-imagen,
-  .comida-imagen,
-  .extra-imagen,
-  .bebida-imagen {
-    transform: none !important;
-  }
+/* Imagen dentro de tarjetas */
+.comida-imagen,
+.extra-imagen,
+.bebida-imagen {
+  transition: transform 0.3s;
 }
-
-/* Móviles */
-@media (max-width: 599px) {
-  .q-img {
-    height: 180px;
-  }
+.comida-card:hover .comida-imagen,
+.extra-card:hover .extra-imagen,
+.bebida-card:hover .bebida-imagen {
+  transform: scale(1.05);
 }
 
 /* ==============================
-   TIPOGRAFÍA RESPONSIVE
+   TEXTOS Y COLORES
    ============================== */
 .text-primary {
   color: #ff6f00 !important;
-  font-family: "Fascinate Inline", system-ui; 
+  font-family:"Fascinate Inline", system-ui; 
 }
 
 .text-h6 {
   font-family: "Sour Gummy", sans-serif;
 }
 
-.text-caption {
+.text-caption{
   font-family: "Sour Gummy", sans-serif;
   font-size: 15px;
 }
 
-.text-subtitle1 {
+.text-subtitle1{
   font-family: "Sour Gummy", sans-serif;
   font-size: 20px;
 }
 
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .text-caption {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-  }
-  
-  .text-subtitle1 {
-    font-size: 14px !important;
-  }
-  
-  .text-body2 {
-    font-size: 12px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .text-caption {
-    font-size: 13px;
-  }
-  
-  .text-subtitle1 {
-    font-size: 16px;
-  }
-}
-
-/* ==============================
-   BOTONES RESPONSIVE
-   ============================== */
-.q-btn {
-  border-radius: 50%;
-  min-width: 36px;
-  min-height: 36px;
-}
-
-/* Ultra-pequeñas: botones más grandes para touch */
-@media (max-width: 300px) {
-  .q-btn {
-    min-width: 40px !important;
-    min-height: 40px !important;
-  }
-  
-  .q-btn--round {
-    border-radius: 20px !important;
-  }
-  
-  .btn-pedido {
-    font-size: 10px !important;
-    padding: 8px !important;
-  }
-  
-  .btn-vaciar {
-    font-size: 10px !important;
-    padding: 6px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .q-btn {
-    min-width: 38px;
-    min-height: 38px;
-  }
-}
-
-.btn-pedido {
-  border-radius: 8px !important;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
-  transition: all 0.3s ease;
-}
-
-.btn-pedido:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
-}
-
-.btn-vaciar {
-  border-radius: 6px !important;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* ==============================
-   CARRITO RESPONSIVE
-   ============================== */
-.carrito-drawer {
-  width: 350px !important;
-}
-
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .carrito-drawer {
-    width: 100% !important;
-  }
-  
-  .carrito-drawer .q-item-label {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-  }
-  
-  .carrito-drawer .q-img {
-    width: 30px !important;
-    height: 30px !important;
-  }
-  
-  .carrito-drawer .text-h6,
-  .carrito-drawer .text-h5 {
-    font-size: 12px !important;
-  }
-  
-  .carrito-drawer .q-btn {
-    min-width: 32px !important;
-    min-height: 32px !important;
-  }
-  
-  .carrito-drawer .q-item {
-    padding: 4px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .carrito-drawer {
-    width: 280px !important;
-  }
-  
-  .carrito-drawer .q-item-label {
-    font-size: 12px !important;
-  }
-  
-  .carrito-drawer .q-img {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  
-  .carrito-drawer .text-h6,
-  .carrito-drawer .text-h5 {
-    font-size: 14px !important;
-  }
-}
-
-/* ==============================
-   DIALOGS Y MODALS RESPONSIVE
-   ============================== */
-
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .q-dialog .q-card {
-    min-width: 280px !important;
-    max-width: 290px !important;
-    margin: 8px !important;
-  }
-  
-  .q-dialog .q-card-section {
-    padding: 8px !important;
-  }
-  
-  .q-dialog .text-h6 {
-    font-size: 14px !important;
-  }
-  
-  .q-dialog .q-option-group {
-    font-size: 11px !important;
-  }
-  
-  .q-dialog .q-input {
-    font-size: 12px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .q-dialog .q-card {
-    min-width: 320px;
-    max-width: 350px;
-    margin: 16px;
-  }
-  
-  .q-dialog .q-card-section {
-    padding: 12px;
-  }
-}
-
-/* ==============================
-   TABS RESPONSIVE
-   ============================== */
 .q-tab-panels {
   background: #fff;
   border-radius: 8px;
   margin-top: 10px;
 }
 
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .q-tabs .q-tab {
-    min-width: 60px !important;
-    padding: 4px 8px !important;
-    font-size: 10px !important;
-  }
-  
-  .q-tab-panels {
-    border-radius: 4px;
-    margin-top: 4px;
-  }
+.q-chip {
+  background: #ffe0b2 !important;
+  color: #5d4037 !important;
+  font-size: 12px;
 }
 
-/* Móviles */
-@media (max-width: 599px) {
-  .q-tabs .q-tab {
-    min-width: 80px;
-    font-size: 12px;
-  }
+.q-toolbar{
+  font-family:"Fascinate Inline", system-ui;
 }
 
 /* ==============================
-   UTILIDADES RESPONSIVE
+   BOTONES Y BADGES
    ============================== */
-
-/* Espaciados adaptativos */
-.responsive-padding {
-  padding: 20px;
+.q-btn {
+  border-radius: 50%;
 }
 
-@media (max-width: 300px) {
-  .responsive-padding {
-    padding: 8px !important;
-  }
-}
-
-@media (max-width: 599px) {
-  .responsive-padding {
-    padding: 12px;
-  }
-}
-
-/* Márgenes adaptativos */
-.responsive-margin {
-  margin: 16px 0;
-}
-
-@media (max-width: 300px) {
-  .responsive-margin {
-    margin: 8px 0 !important;
-  }
-}
-
-/* Grid responsive helpers */
-.ultra-small-full {
-  width: 100%;
-}
-
-@media (max-width: 300px) {
-  .ultra-small-stack > * {
-    width: 100% !important;
-    margin-bottom: 8px !important;
-  }
+.q-badge {
+  font-size: 12px;
+  padding: 4px 6px;
 }
 
 /* ==============================
-   ALERTAS Y NOTIFICACIONES
+   CARRITO
    ============================== */
-.swal2-container {
-  z-index: 3000 !important;
+.q-list {
+  border-top: 1px solid #eee;
 }
 
-@media (max-width: 300px) {
-  .swal2-popup {
-    width: 280px !important;
+.q-item-label {
+  font-size: 14px;
+}
+
+.btn-vaciar {
+  border-radius: 6px !important; /* Borde cuadrado, pero con ligera suavidad */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.carrito-drawer {
+  width: 350px !important;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 600px) {
+  .q-page-container {
+    padding: 10px;
+  }
+
+  .comida-card,
+  .promo-card,
+  .extra-card,
+  .bebida-card {
+    margin-bottom: 15px;
+  }
+
+}
+
+@media (max-width: 550px) {
+  .q-toolbar{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carrito-drawer {
+    width: 220px !important; /* más angosto en móvil */
+  }
+
+  /* Ajustar textos e imágenes dentro del carrito */
+  .carrito-drawer .q-item-label {
     font-size: 12px !important;
   }
-  
-  .swal2-title {
-    font-size: 16px !important;
+
+  .carrito-drawer .q-img {
+    width: 40px !important;
+    height: 40px !important;
   }
-  
-  .swal2-content {
-    font-size: 11px !important;
+
+  .carrito-drawer .text-h6,
+  .carrito-drawer .text-h5 {
+    font-size: 14px !important;
+  }
+
+  .carrito-drawer .q-btn {
+    min-width: 28px !important;
+    min-height: 28px !important;
   }
 }
 
-/* ==============================
-   CAROUSEL RESPONSIVE
-   ============================== */
-
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .carousel-wrapper {
-    height: 40vh !important;
-  }
-  
-  .fancy-carousel {
-    border-radius: 8px !important;
-  }
-  
-  .indicator {
-    width: 6px !important;
-    height: 6px !important;
-    margin: 0 2px !important;
-  }
-}
-
-/* Móviles */
-@media (max-width: 599px) {
-  .carousel-wrapper {
-    height: 50vh;
-  }
-  
-  .fancy-carousel {
-    border-radius: 12px;
-  }
-}
-
-/* ==============================
-   HOME PAGE RESPONSIVE
-   ============================== */
-
-/* Ultra-pequeñas */
-@media (max-width: 300px) {
-  .welcome-section {
-    padding: 16px 8px !important;
-  }
-  
-  .welcome-section .text-h3 {
-    font-size: 1.2rem !important;
-  }
-  
-  .welcome-section .text-subtitle1 {
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
-  
-  .why-us-section {
-    padding: 16px 8px !important;
-  }
-  
-  .why-card {
-    padding: 8px !important;
-  }
-  
-  .why-card .q-icon {
-    font-size: 24px !important;
-  }
-  
-  .social-section {
-    padding: 12px 8px !important;
-  }
-  
-  .social-section .q-btn {
-    margin: 4px !important;
-  }
-}
