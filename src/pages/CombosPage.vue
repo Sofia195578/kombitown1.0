@@ -73,7 +73,7 @@ const promociones = ref([
     id: 101,
     titulo: 'Combo Familiar',
     descripcion: '4 hamburguesas + papas + gaseosas',
-    imagen: '/public/combos/1.jpg',
+    imagen: 'combos/1.jpg',
     precio: 45000,
     descuento: 20
   },
@@ -81,7 +81,7 @@ const promociones = ref([
     id: 102,
     titulo: '2x1 Perros Calientes',
     descripcion: 'Solo este fin de semana',
-    imagen: '/public/combos/2.jpg',
+    imagen: 'combos/2.jpg',
     precio: 18000,
     descuento: 50
   },
@@ -89,7 +89,7 @@ const promociones = ref([
     id: 103,
     titulo: 'Mega Combo Pizza + Bebida',
     descripcion: 'Pizza grande + gaseosa 1.5L',
-    imagen: '/public/combos/3.jpg',
+    imagen: 'combos/3.jpg',
     precio: 30000,
     descuento: 15
   },
@@ -97,7 +97,7 @@ const promociones = ref([
     id: 104,
     titulo: 'Postre Gratis',
     descripcion: 'Por la compra de 2 hamburguesas',
-    imagen: '/public/combos/4.jpg',
+    imagen: 'combos/4.jpg',
     precio: 0,
     descuento: 100
   }
