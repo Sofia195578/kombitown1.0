@@ -15,5 +15,5 @@ export default defineConfig({
       )
     })
   ],
-  base:"/kombitown1.0/"
+  base:"https://sofia195578.github.io/kombitown1.0/"
 })
