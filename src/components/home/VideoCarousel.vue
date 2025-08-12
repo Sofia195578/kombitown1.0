@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="carousel-wrapper">
     <q-carousel
@@ -42,10 +44,10 @@ const slide = ref(0)
 let interval = null
 
 const videos = [
-  'public/videos/bebidas.mp4',
-  'public/videos/hamburguesa.mp4',
-  'public/videos/hotdog.mp4',
-  'public/videos/salchipapa.mp4'
+  'videos/bebidas.mp4',
+  'videos/hamburguesa.mp4',
+  'videos/hotdog.mp4',
+  'videos/salchipapa.mp4'
 ]
 
 function pauseCarousel() {
