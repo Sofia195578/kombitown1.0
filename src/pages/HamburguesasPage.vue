@@ -179,7 +179,7 @@ const hamburguesas = ref([
     nombre: 'KombiClásica',
     descripcion: 'Carne 100% res, queso, lechuga fresca, tomate y salsa especial de la casa',
     precio: 12000,
-    imagen: '/public/hamburguesas/1.jpg',
+    imagen: 'hamburguesas/1.jpg',
     tipo: 'popular', // Tiene badge Popular
     categoria: 'hamburguesas'
   },
@@ -188,7 +188,7 @@ const hamburguesas = ref([
     nombre: 'KombiBBQ',
     descripcion: 'Carne jugosa, tocineta crocante, cebolla caramelizada y salsa BBQ ahumada',
     precio: 15000,
-    imagen: '/public/hamburguesas/2.jpg',
+    imagen: 'hamburguesas/2.jpg',
     tipo: 'popular', // Tiene badge Popular
     categoria: 'hamburguesas'
   },
@@ -197,7 +197,7 @@ const hamburguesas = ref([
     nombre: 'KombiFull',
     descripcion: 'Doble carne, doble queso, tocineta, huevo y papas chip',
     precio: 18000,
-    imagen: '/public/hamburguesas/3.jpg',
+    imagen: 'hamburguesas/3.jpg',
     tipo: null, // No tiene badge
     categoria: 'hamburguesas'
   },
@@ -206,7 +206,7 @@ const hamburguesas = ref([
     nombre: 'KombiVeggie',
     descripcion: 'Hamburguesa de quinoa y garbanzos con vegetales frescos y salsa de yogur',
     precio: 14000,
-    imagen: '/public/hamburguesas/4.jpg',
+    imagen: 'hamburguesas/4.jpg',
     tipo: null, // No tiene badge
     categoria: 'hamburguesas'
   },
@@ -215,7 +215,7 @@ const hamburguesas = ref([
     nombre: 'MegaKombi',
     descripcion: 'Triple carne, queso cheddar, cebolla crispy y salsa especial MegaTown',
     precio: 22000,
-    imagen: '/public/hamburguesas/5.jpg',
+    imagen: 'hamburguesas/5.jpg',
     tipo: 'popular', // Tiene badge Popular
     categoria: 'hamburguesas'
   },
@@ -224,7 +224,7 @@ const hamburguesas = ref([
     nombre: 'KombiTropical',
     descripcion: 'Carne jugosa con piña caramelizada, jamón y salsa hawaiana',
     precio: 16000,
-    imagen: '/public/hamburguesas/6.jpg',
+    imagen: 'hamburguesas/6.jpg',
     tipo: null, // No tiene badge
     categoria: 'hamburguesas'
   },
@@ -233,7 +233,7 @@ const hamburguesas = ref([
     nombre: 'KombiPicante',
     descripcion: 'Carne, queso, jalapeños, salsa picante y tocineta crocante',
     precio: 17000,
-    imagen: '/public/hamburguesas/7.jpg',
+    imagen: 'hamburguesas/7.jpg',
     tipo: 'picante', // Tiene badge Picante
     categoria: 'hamburguesas'
   },
@@ -242,7 +242,7 @@ const hamburguesas = ref([
     nombre: 'KombiRanch',
     descripcion: 'Carne, queso americano, cebolla crispy y salsa ranch',
     precio: 15500,
-    imagen: '/public/hamburguesas/8.jpg',
+    imagen: 'hamburguesas/8.jpg',
     tipo: null, // No tiene badge
     categoria: 'hamburguesas'
   },
@@ -251,7 +251,7 @@ const hamburguesas = ref([
     nombre: 'KombiSuprema',
     descripcion: 'Doble carne Angus, queso suizo, champiñones y salsa de trufa',
     precio: 25000,
-    imagen: '/public/hamburguesas/9.jpg',
+    imagen: 'hamburguesas/9.jpg',
     tipo: 'popular', // Tiene badge Popular
     categoria: 'hamburguesas'
   },
@@ -260,7 +260,7 @@ const hamburguesas = ref([
     nombre: 'KombiDobleQueso',
     descripcion: 'Carne doble con mezcla de quesos cheddar y mozzarella derretidos',
     precio: 19000,
-    imagen: '/public/hamburguesas/10.jpg',
+    imagen: 'hamburguesas/10.jpg',
     tipo: null, // Tiene badge Picante
     categoria: 'hamburguesas'
   }
