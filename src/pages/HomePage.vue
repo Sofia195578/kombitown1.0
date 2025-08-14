@@ -79,6 +79,7 @@ function goTo(platform) {
   margin: auto;
 }
 
+
 .brand {
   color: #e53935;
 }
@@ -100,4 +101,26 @@ function goTo(platform) {
 .social-section .q-btn:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 395px){
+
+  .text-h3{
+    margin-left: -20px;
+  }
+}
+
+@media (max-width: 350px){
+
+  .text-h3{
+    margin-left: -40px;
+  }
+}
+
+@media (max-width: 330px){
+
+  .text-h3{
+    margin-left: -30px;
+  }
+}
+
 </style>

@@ -79,3 +79,29 @@ watch(localValue, (val) => {
   emit('update:modelValue', val)
 })
 </script>
+
+
+<style scoped>
+@media (max-width: 350px) {
+  .header-container {
+    flex-wrap: wrap; /* Permite que los elementos bajen de línea */
+    justify-content: center;
+    padding: 5px;
+    gap: 6px;
+  }
+
+  .header-container .logo {
+    font-size: 1rem; /* Logo más pequeño */
+  }
+
+  .header-container .search-input {
+    width: 100% !important; /* Buscador ocupa todo el ancho */
+    font-size: 0.85rem;
+  }
+
+  .header-container .q-btn {
+    min-width: 32px;
+    padding: 4px;
+  }
+}
+</style>

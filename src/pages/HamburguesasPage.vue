@@ -1,23 +1,13 @@
 <template>
-  <div class="q-pa-md">
-    <div class="text-h4 text-center text-primary q-mb-lg">
+  <q-page padding>
+    <div class="text-h4 text-center text-primary q-mb-lg q-mt-md">
       🍔 Hamburguesas
     </div>
-
     <!-- Lista hamburguesas filtradas -->
     <div class="row q-col-gutter-md">
-      <div
-        v-for="hamburguesa in productosFiltrados"
-        :key="hamburguesa.id"
-        class="col-12 col-sm-6 col-md-3"
-      >
+      <div v-for="hamburguesa in productosFiltrados" :key="hamburguesa.id" class="col-12 col-sm-6 col-md-3">
         <q-card class="hamburguesa-card cursor-pointer">
-          <q-img
-            :src="hamburguesa.imagen"
-            :alt="hamburguesa.nombre"
-            ratio="1"
-            class="hamburguesa-imagen"
-          />
+          <q-img :src="hamburguesa.imagen" :alt="hamburguesa.nombre" ratio="1" class="hamburguesa-imagen" />
 
           <q-card-section>
             <div class="text-h6 text-weight-bold">{{ hamburguesa.nombre }}</div>
@@ -31,306 +21,281 @@
               <div class="text-h6 text-primary text-weight-bold">
                 ${{ hamburguesa.precio.toLocaleString() }}
               </div>
-              <q-btn
-                round
-                color="primary"
-                icon="add_shopping_cart"
-                size="sm"
-                @click.stop="abrirPersonalizacion(hamburguesa)"
-              />
+              <q-btn round color="primary" icon="add_shopping_cart" size="sm"
+                @click.stop="abrirPersonalizacion(hamburguesa)" />
             </div>
           </q-card-section>
 
-          <q-badge
-            v-if="hamburguesa.tipo"
-            :color="hamburguesa.tipo === 'popular' ? 'orange' : 'red'"
-            floating
-            class="text-white"
-          >
-            {{ hamburguesa.tipo === 'popular' ? '🌟 Popular' : '🌶️ Picante' }}
+          <q-badge v-if="hamburguesa.tipo" :color="hamburguesa.tipo === 'popular' ? 'orange' : 'red'" floating
+            class="text-white">
+            {{ hamburguesa.tipo === "popular" ? "🌟 Popular" : "🌶️ Picante" }}
           </q-badge>
         </q-card>
       </div>
     </div>
 
     <!-- Dialog Personalización -->
-    <q-dialog v-model="mostrarDialogPersonalizar" persistent>
-      <q-card style="min-width: 400px; max-width: 500px;">
+    <q-dialog v-model="mostrarDialogPersonalizar" persistent :maximized="$q.screen.lt.sm" class="responsive-dialog">
+      <q-card :style="$q.screen.lt.sm
+        ? 'width: 100vw; height: 100vh; max-width: none'
+        : 'min-width: 400px; max-width: 500px'
+        " class="responsive-card">
         <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6">🍔 Personalizar Hamburguesa</div>
+          <div class="text-h6 dialog-title">🍔 Personalizar Hamburguesa</div>
           <q-space />
-          <q-btn icon="close" flat round dense v-close-popup />
+          <q-btn icon="close" flat round dense v-close-popup class="close-btn" />
         </q-card-section>
 
-        <q-card-section v-if="productoSeleccionado">
+        <!-- El resto del contenido del modal permanece igual, pero agrega estas clases CSS: -->
+        <q-card-section v-if="productoSeleccionado" class="dialog-content">
           <!-- Info producto -->
-          <div class="row q-gutter-md q-mb-md">
-            <q-img
-              :src="productoSeleccionado.imagen"
-              :alt="productoSeleccionado.nombre"
-              style="width: 100px; height: 100px;"
-              class="rounded-borders"
-            />
-            <div class="col">
-              <div class="text-h6">{{ productoSeleccionado.nombre }}</div>
-              <div class="text-body2 text-grey-7">
+          <div class="row q-gutter-md q-mb-md product-info">
+            <q-img :src="productoSeleccionado.imagen" :alt="productoSeleccionado.nombre" :style="$q.screen.lt.sm
+              ? 'width: 60px; height: 60px'
+              : 'width: 100px; height: 100px'
+              " class="rounded-borders product-image" />
+            <div class="col product-details">
+              <div class="text-h6 product-name">
+                {{ productoSeleccionado.nombre }}
+              </div>
+              <div class="text-body2 text-grey-7 product-description">
                 {{ productoSeleccionado.descripcion }}
               </div>
-              <div class="text-h6 text-primary q-mt-sm">
+              <div class="text-h6 text-primary q-mt-sm product-price">
                 ${{ productoSeleccionado.precio.toLocaleString() }}
               </div>
             </div>
           </div>
 
           <!-- Cantidad -->
-          <div class="q-mb-md">
-            <div class="text-subtitle2 q-mb-sm">Cantidad:</div>
-            <div class="row items-center q-gutter-md">
-              <q-btn
-                round
-                color="red"
-                icon="remove"
-                size="sm"
-                :disable="cantidad <= 1"
-                @click="cantidad = Math.max(1, cantidad - 1)"
-              />
-              <div class="text-h6 text-weight-bold">{{ cantidad }}</div>
-              <q-btn
-                round
-                color="green"
-                icon="add"
-                size="sm"
-                @click="cantidad++"
-              />
+          <div class="q-mb-md quantity-section">
+            <div class="text-subtitle2 q-mb-sm section-title">Cantidad:</div>
+            <div class="row items-center q-gutter-md quantity-controls">
+              <q-btn round color="red" icon="remove" size="sm" :disable="cantidad <= 1"
+                @click="cantidad = Math.max(1, cantidad - 1)" class="quantity-btn" />
+              <div class="text-h6 text-weight-bold quantity-display">
+                {{ cantidad }}
+              </div>
+              <q-btn round color="green" icon="add" size="sm" @click="cantidad++" class="quantity-btn" />
             </div>
           </div>
 
           <!-- Extras -->
-          <div class="q-mb-md">
-            <div class="text-subtitle2 q-mb-sm">Extras:</div>
-            <q-option-group
-              v-model="extrasSeleccionados"
-              :options="extrasDisponibles.map(extra => ({
-                label: `${extra.nombre} (+${extra.precio.toLocaleString()})`,
-                value: extra
-              }))"
-              type="checkbox"
-              dense
-            />
+          <div class="q-mb-md extras-section">
+            <div class="text-subtitle2 q-mb-sm section-title">Extras:</div>
+            <q-option-group v-model="extrasSeleccionados" :options="extrasDisponibles.map((extra) => ({
+              label: `${extra.nombre} (+${extra.precio.toLocaleString()})`,
+              value: extra,
+            }))
+              " type="checkbox" dense class="extras-options" />
           </div>
 
           <!-- Notas -->
-          <div class="q-mb-md">
-            <q-input
-              v-model="notasEspeciales"
-              label="Notas especiales"
-              type="textarea"
-              rows="2"
-              outlined
-              dense
-              placeholder="Ej: Sin cebolla, punto de carne, etc."
-            />
+          <div class="q-mb-md notes-section">
+            <q-input v-model="notasEspeciales" label="Notas especiales" type="textarea" rows="2" outlined dense
+              placeholder="Ej: Sin cebolla, punto de carne, etc." class="notes-input" />
           </div>
 
           <!-- Precio total -->
           <q-separator class="q-my-md" />
-          <div class="row justify-between items-center">
-            <div class="text-h6">Total:</div>
-            <div class="text-h5 text-primary text-weight-bold">
+          <div class="row justify-between items-center total-section">
+            <div class="text-h6 total-label">Total:</div>
+            <div class="text-h5 text-primary text-weight-bold total-price">
               ${{ calcularPrecioConExtras().toLocaleString() }}
             </div>
           </div>
         </q-card-section>
 
-        <q-card-actions align="right" class="q-pt-none">
-          <q-btn flat label="Cancelar" color="grey" v-close-popup />
-          <q-btn
-            round
-            color="primary"
-            icon="add_shopping_cart"
-            size="sm"
-            @click="confirmarAgregarAlCarrito"
-          />
+        <q-card-actions align="right" class="q-pt-none dialog-actions">
+          <q-btn flat label="Cancelar" color="grey" v-close-popup class="cancel-btn" />
+          <q-btn round color="primary" icon="add_shopping_cart" size="sm" @click="confirmarAgregarAlCarrito"
+            class="add-btn" />
         </q-card-actions>
       </q-card>
     </q-dialog>
-  </div>
+  </q-page>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import Swal from 'sweetalert2'
-import { useCarrito } from '../components/composables/useCarrito.js'
+import { ref, computed } from "vue";
+import Swal from "sweetalert2";
+import { useCarrito } from "../components/composables/useCarrito.js";
 
 const props = defineProps({
   searchQuery: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const { agregarItem, buscarProductoEnCarrito } = useCarrito()
-
+const { agregarItem, buscarProductoEnCarrito } = useCarrito();
 
 // Lista hamburguesas
 const hamburguesas = ref([
   {
     id: 1,
-    nombre: 'KombiClásica',
-    descripcion: 'Carne 100% res, queso, lechuga fresca, tomate y salsa especial de la casa',
+    nombre: "KombiClásica",
+    descripcion:
+      "Carne 100% res, queso, lechuga fresca, tomate y salsa especial de la casa",
     precio: 12000,
-    imagen: 'hamburguesas/1.jpg',
-    tipo: 'popular', // Tiene badge Popular
-    categoria: 'hamburguesas'
+    imagen: "hamburguesas/1.jpg",
+    tipo: "popular", // Tiene badge Popular
+    categoria: "hamburguesas",
   },
   {
     id: 2,
-    nombre: 'KombiBBQ',
-    descripcion: 'Carne jugosa, tocineta crocante, cebolla caramelizada y salsa BBQ ahumada',
+    nombre: "KombiBBQ",
+    descripcion:
+      "Carne jugosa, tocineta crocante, cebolla caramelizada y salsa BBQ ahumada",
     precio: 15000,
-    imagen: 'hamburguesas/2.jpg',
-    tipo: 'popular', // Tiene badge Popular
-    categoria: 'hamburguesas'
+    imagen: "hamburguesas/2.jpg",
+    tipo: "popular", // Tiene badge Popular
+    categoria: "hamburguesas",
   },
   {
     id: 3,
-    nombre: 'KombiFull',
-    descripcion: 'Doble carne, doble queso, tocineta, huevo y papas chip',
+    nombre: "KombiFull",
+    descripcion: "Doble carne, doble queso, tocineta, huevo y papas chip",
     precio: 18000,
-    imagen: 'hamburguesas/3.jpg',
+    imagen: "hamburguesas/3.jpg",
     tipo: null, // No tiene badge
-    categoria: 'hamburguesas'
+    categoria: "hamburguesas",
   },
   {
     id: 4,
-    nombre: 'KombiVeggie',
-    descripcion: 'Hamburguesa de quinoa y garbanzos con vegetales frescos y salsa de yogur',
+    nombre: "KombiVeggie",
+    descripcion:
+      "Hamburguesa de quinoa y garbanzos con vegetales frescos y salsa de yogur",
     precio: 14000,
-    imagen: 'hamburguesas/4.jpg',
+    imagen: "hamburguesas/4.jpg",
     tipo: null, // No tiene badge
-    categoria: 'hamburguesas'
+    categoria: "hamburguesas",
   },
   {
     id: 5,
-    nombre: 'MegaKombi',
-    descripcion: 'Triple carne, queso cheddar, cebolla crispy y salsa especial MegaTown',
+    nombre: "MegaKombi",
+    descripcion:
+      "Triple carne, queso cheddar, cebolla crispy y salsa especial MegaTown",
     precio: 22000,
-    imagen: 'hamburguesas/5.jpg',
-    tipo: 'popular', // Tiene badge Popular
-    categoria: 'hamburguesas'
+    imagen: "hamburguesas/5.jpg",
+    tipo: "popular", // Tiene badge Popular
+    categoria: "hamburguesas",
   },
   {
     id: 6,
-    nombre: 'KombiTropical',
-    descripcion: 'Carne jugosa con piña caramelizada, jamón y salsa hawaiana',
+    nombre: "KombiTropical",
+    descripcion: "Carne jugosa con piña caramelizada, jamón y salsa hawaiana",
     precio: 16000,
-    imagen: 'hamburguesas/6.jpg',
+    imagen: "hamburguesas/6.jpg",
     tipo: null, // No tiene badge
-    categoria: 'hamburguesas'
+    categoria: "hamburguesas",
   },
   {
     id: 7,
-    nombre: 'KombiPicante',
-    descripcion: 'Carne, queso, jalapeños, salsa picante y tocineta crocante',
+    nombre: "KombiPicante",
+    descripcion: "Carne, queso, jalapeños, salsa picante y tocineta crocante",
     precio: 17000,
-    imagen: 'hamburguesas/7.jpg',
-    tipo: 'picante', // Tiene badge Picante
-    categoria: 'hamburguesas'
+    imagen: "hamburguesas/7.jpg",
+    tipo: "picante", // Tiene badge Picante
+    categoria: "hamburguesas",
   },
   {
     id: 8,
-    nombre: 'KombiRanch',
-    descripcion: 'Carne, queso americano, cebolla crispy y salsa ranch',
+    nombre: "KombiRanch",
+    descripcion: "Carne, queso americano, cebolla crispy y salsa ranch",
     precio: 15500,
-    imagen: 'hamburguesas/8.jpg',
+    imagen: "hamburguesas/8.jpg",
     tipo: null, // No tiene badge
-    categoria: 'hamburguesas'
+    categoria: "hamburguesas",
   },
   {
     id: 9,
-    nombre: 'KombiSuprema',
-    descripcion: 'Doble carne Angus, queso suizo, champiñones y salsa de trufa',
+    nombre: "KombiSuprema",
+    descripcion: "Doble carne Angus, queso suizo, champiñones y salsa de trufa",
     precio: 25000,
-    imagen: 'hamburguesas/9.jpg',
-    tipo: 'popular', // Tiene badge Popular
-    categoria: 'hamburguesas'
+    imagen: "hamburguesas/9.jpg",
+    tipo: "popular", // Tiene badge Popular
+    categoria: "hamburguesas",
   },
   {
     id: 10,
-    nombre: 'KombiDobleQueso',
-    descripcion: 'Carne doble con mezcla de quesos cheddar y mozzarella derretidos',
+    nombre: "KombiDobleQueso",
+    descripcion:
+      "Carne doble con mezcla de quesos cheddar y mozzarella derretidos",
     precio: 19000,
-    imagen: 'hamburguesas/10.jpg',
+    imagen: "hamburguesas/10.jpg",
     tipo: null, // Tiene badge Picante
-    categoria: 'hamburguesas'
-  }
-])
-
+    categoria: "hamburguesas",
+  },
+]);
 
 // Estado para el modal
-const mostrarDialogPersonalizar = ref(false)
-const productoSeleccionado = ref(null)
-const cantidad = ref(1)
-const extrasSeleccionados = ref([])
-const notasEspeciales = ref('')
+const mostrarDialogPersonalizar = ref(false);
+const productoSeleccionado = ref(null);
+const cantidad = ref(1);
+const extrasSeleccionados = ref([]);
+const notasEspeciales = ref("");
 
 // Extras disponibles
 const extrasDisponibles = ref([
-  { id: 1, nombre: 'Queso extra', precio: 2000 },
-  { id: 2, nombre: 'Tocineta', precio: 3000 },
-  { id: 3, nombre: 'Cebolla caramelizada', precio: 1500 },
-  { id: 4, nombre: 'Aguacate', precio: 2500 },
-  { id: 5, nombre: 'Champiñones', precio: 2000 }
-])
+  { id: 1, nombre: "Queso extra", precio: 2000 },
+  { id: 2, nombre: "Tocineta", precio: 3000 },
+  { id: 3, nombre: "Cebolla caramelizada", precio: 1500 },
+  { id: 4, nombre: "Aguacate", precio: 2500 },
+  { id: 5, nombre: "Champiñones", precio: 2000 },
+]);
 
 function abrirPersonalizacion(hamburguesa) {
-  productoSeleccionado.value = hamburguesa
-  cantidad.value = 1
-  extrasSeleccionados.value = []
-  notasEspeciales.value = ''
-  mostrarDialogPersonalizar.value = true
+  productoSeleccionado.value = hamburguesa;
+  cantidad.value = 1;
+  extrasSeleccionados.value = [];
+  notasEspeciales.value = "";
+  mostrarDialogPersonalizar.value = true;
 }
 
 function confirmarAgregarAlCarrito() {
-  if (!productoSeleccionado.value) return
+  if (!productoSeleccionado.value) return;
 
   agregarItem(
     productoSeleccionado.value,
     cantidad.value,
     extrasSeleccionados.value,
     notasEspeciales.value
-  )
+  );
 
   Swal.fire({
-    title: '¡Agregado al carrito!',
+    title: "¡Agregado al carrito!",
     text: `${productoSeleccionado.value.nombre} se agregó correctamente`,
-    icon: 'success',
+    icon: "success",
     timer: 1500,
     showConfirmButton: false,
-    position: 'top-end',
+    position: "top-end",
     toast: true,
-  })
+  });
 
-  mostrarDialogPersonalizar.value = false
+  mostrarDialogPersonalizar.value = false;
 }
 
 function calcularPrecioConExtras() {
-  if (!productoSeleccionado.value) return 0
-  const precioBase = productoSeleccionado.value.precio
-  const precioExtras = extrasSeleccionados.value.reduce((sum, extra) => sum + extra.precio, 0)
-  return (precioBase + precioExtras) * cantidad.value
+  if (!productoSeleccionado.value) return 0;
+  const precioBase = productoSeleccionado.value.precio;
+  const precioExtras = extrasSeleccionados.value.reduce(
+    (sum, extra) => sum + extra.precio,
+    0
+  );
+  return (precioBase + precioExtras) * cantidad.value;
 }
 
 // Filtrado hamburguesas según searchQuery
 const productosFiltrados = computed(() => {
-  if (!props.searchQuery) return hamburguesas.value
-  return hamburguesas.value.filter(p =>
-    p.nombre.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
-    p.descripcion.toLowerCase().includes(props.searchQuery.toLowerCase())
-  )
-})
+  if (!props.searchQuery) return hamburguesas.value;
+  return hamburguesas.value.filter(
+    (p) =>
+      p.nombre.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
+      p.descripcion.toLowerCase().includes(props.searchQuery.toLowerCase())
+  );
+});
 </script>
-
 
 <style scoped>
 .hamburguesa-card {
@@ -350,4 +315,8 @@ const productosFiltrados = computed(() => {
 .hamburguesa-card:hover .hamburguesa-imagen {
   transform: scale(1.05);
 }
+
+
+
+
 </style>
